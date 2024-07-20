@@ -83,7 +83,7 @@ Web application focused on generating GitHub README profiles using AI.
 
     - Pattern `<type>(<scope>): <message>`. Where:
       - Type: `feat|chore|fix`
-      - Scope: Block or scope the changes affect the most.
+      - Scope (optional): Block or scope the changes affect the most.
       - Message: Short description.
     - Example:
       - `chore(master): create required DB tables`
