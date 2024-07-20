@@ -7,14 +7,14 @@ public/
 node_modules/
 
 # Ignore configuration files
-.eslintignore
-.eslintrc.js
+package-lock.json
 package.json
 
 # Ignore style files and other specific extensions
 *.min.js
 *.css
 *.scss
+*.mjs
 
 # Ignore specific directories
 coverage/
