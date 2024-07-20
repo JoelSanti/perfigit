@@ -15,7 +15,8 @@
         "singleQuote": true,
         "semi": false
       }
-    ]
+    ],
+    "react/react-in-jsx-scope": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2020,
