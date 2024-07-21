@@ -1,4 +1,3 @@
-import { generalFont } from '@/config/fonts'
 
 export default function Home() {
   return (
