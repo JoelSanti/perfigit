@@ -1,0 +1,2 @@
+echo "🧪 Running pre-commit hook..."
+npm run precommit
