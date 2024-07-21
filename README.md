@@ -34,13 +34,19 @@ Web application focused on generating GitHub README profiles using AI.
 
    - Fill in the values of the environment variables.
 
-4. Start the development server and navigate to <http://127.0.0.1:3000/> to access the application.
+4. Set up Git hooks:
+
+   ```bash
+   npm run prepare
+   ```
+
+5. Start the development server and navigate to <http://127.0.0.1:3000/> to access the application.
 
    ```bash
    npm run dev
    ```
 
-5. That's all you need to do.
+6. That's all you need to do.
 
 ## 🖥️ Local Development
 

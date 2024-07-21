@@ -16,7 +16,8 @@
         "semi": false
       }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-explicit-any": "warn"
   },
   "parserOptions": {
     "ecmaVersion": 2024,
