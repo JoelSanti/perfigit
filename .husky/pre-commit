@@ -1,2 +1,2 @@
-echo "🔍 Running pre-commit hook..."
+echo "🧪 Running pre-commit hook..."
 npm run precommit
