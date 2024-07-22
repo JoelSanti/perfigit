@@ -4,20 +4,22 @@ import { ListGithubTopLanguageService } from './list-github-top-language.service
 
 export class GithubService {
   private endpoint: string
+  private username: string
 
   private GetGithubUserService: GetGithubUserService
   private ListGithubTopLanguageService: ListGithubTopLanguageService
 
   constructor(username: string) {
     this.endpoint = 'https://api.github.com'
+    this.username = username
 
     this.GetGithubUserService = new GetGithubUserService(
       this.endpoint,
-      username
+      this.username
     )
     this.ListGithubTopLanguageService = new ListGithubTopLanguageService(
       this.endpoint,
-      username
+      this.username
     )
   }
 
