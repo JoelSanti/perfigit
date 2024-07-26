@@ -27,7 +27,7 @@ export default function Home() {
   const handleSubmit = (value: string) => {
     setIsLoading(true)
     console.log(value)
-    // setIsLoading(false)
+    
   }
 
   return (
