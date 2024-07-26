@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { MarkdownPreviewProps } from '@/interfaces/ui/markdown-preview-props.interface'
 
-export const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({
+export const MarkDownPreview: React.FC<MarkdownPreviewProps> = ({
   markdown,
 }) => {
   return (

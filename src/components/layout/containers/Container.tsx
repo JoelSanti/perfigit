@@ -1,4 +1,4 @@
-import { ContainerProps } from '@/interfaces/ui/container-props.interface'
+import { ContainerProps } from '@/interfaces/ui/props/container.interface'
 import React from 'react'
 
 export const Container: React.FC<ContainerProps> = ({

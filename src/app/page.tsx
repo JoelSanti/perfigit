@@ -2,32 +2,24 @@
 import {
   CodeMarkdown,
   Container,
-  FormGithub,
-  MarkdownPreview,
+  GithubForm,
+  MarkDownPreview,
   NavBar,
 } from '@/components'
-import { useEffect, useState } from 'react'
+import useMarkdown from '@/hooks/useMarkdown.hook'
+import { useState } from 'react'
 
 export default function Home() {
-  const [markdown, setMarkdown] = useState<string>('')
-  const [showCodeMarkdown, setshowCodeMarkdown] = useState(false)
+  const [showCodeMarkdown, setshowCodeMarkdown] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [markdown, setMarkdown] = useMarkdown()
 
-  useEffect(() => {
-    const githubProfile =
-      '<div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n\n' +
-      '# BIENVENIDO A PERFIGIT\n\n' +
-      '</div>'
-
-    setMarkdown(githubProfile)
-  }, [])
   const toggleMarkdownPreview = () => {
     setshowCodeMarkdown(!showCodeMarkdown)
   }
   const handleSubmit = (value: string) => {
     setIsLoading(true)
     console.log(value)
-    
   }
 
   return (
@@ -56,7 +48,7 @@ export default function Home() {
             {isLoading ? (
               <div className='skeleton h-full rounded-none lg:w-1/2'></div>
             ) : (
-              <MarkdownPreview markdown={markdown} />
+              <MarkDownPreview markdown={markdown} />
             )}
           </div>
         </Container>
