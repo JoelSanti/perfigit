@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [markdown, setMarkdown] = useState('')
+  const [markdown, setMarkdown] = useState<string>('')
   const [showCodeMarkdown, setshowCodeMarkdown] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
