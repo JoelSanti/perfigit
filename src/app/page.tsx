@@ -47,7 +47,7 @@ export default function Home() {
                 onClick={toggleMarkdownPreview}
               />
             ) : (
-              <FormGithub
+              <GithubForm
                 onClick={toggleMarkdownPreview}
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
