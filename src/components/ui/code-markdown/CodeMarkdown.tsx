@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CodeMarkdownProps } from '@/interfaces/ui/props/code-markdown.interface'
-import { ClipboardIcon, GoBackIcon } from '../../icons'
+import { ClipboardIcon, GoBackIcon } from '@/components/icons'
 
 export const CodeMarkdown: React.FC<CodeMarkdownProps> = ({
   code,

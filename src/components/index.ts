@@ -1,5 +1,5 @@
 export * from './layout/containers/Container'
-export * from './layout/navbar/NavBar'
+export * from './layout/navbar/Navbar'
 export * from './ui/form-github/GithubForm'
 export * from './ui/code-markdown/CodeMarkdown'
 export * from './ui/markdown-preview/MarkDownPreview'

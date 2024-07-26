@@ -1,4 +1,4 @@
-export const NavBar = () => {
+export const Navbar = () => {
   return (
     <div className='navbar rounded-lg bg-neutral'>
       <div className='flex-1'>

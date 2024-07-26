@@ -4,7 +4,7 @@ import {
   Container,
   GithubForm,
   MarkDownPreview,
-  NavBar,
+  Navbar,
 } from '@/components'
 import useMarkdown from '@/hooks/useMarkdown.hook'
 import { useState } from 'react'
@@ -26,7 +26,7 @@ export default function Home() {
     <main>
       <header>
         <Container className='mt-8 flex h-20 items-center'>
-          <NavBar />
+          <Navbar />
         </Container>
       </header>
       <section>

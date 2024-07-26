@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import 'github-markdown-css'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-import { MarkdownPreviewProps } from '@/interfaces/ui/markdown-preview-props.interface'
+import { MarkdownPreviewProps } from '@/interfaces/ui/props/markdown-preview.interface'
 
 export const MarkDownPreview: React.FC<MarkdownPreviewProps> = ({
   markdown,

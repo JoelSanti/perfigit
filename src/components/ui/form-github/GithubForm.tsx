@@ -1,5 +1,5 @@
 import { GithubIcon } from '@/components/icons'
-import { GithubFormProps } from '@/interfaces/ui/props/form-github-.interface'
+import { GithubFormProps } from '@/interfaces/ui/props/form-github.interface'
 import React, { useState } from 'react'
 
 export const GithubForm: React.FC<GithubFormProps> = ({
