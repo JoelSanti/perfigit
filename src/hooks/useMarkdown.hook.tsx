@@ -1,6 +1,7 @@
-import { useEffect, useState, Dispatch, SetStateAction } from 'react'
+import { useEffect, useState } from 'react'
+import { useMarkdownProps } from '@/interfaces/ui/props/use-markdown.interface'
 
-const useMarkdown = (): [string, Dispatch<SetStateAction<string>>] => {
+const useMarkdown = (): useMarkdownProps => {
   const [markdown, setMarkdown] = useState<string>('')
 
   useEffect(() => {
@@ -12,7 +13,7 @@ const useMarkdown = (): [string, Dispatch<SetStateAction<string>>] => {
     setMarkdown(githubProfile)
   }, [])
 
-  return [markdown, setMarkdown]
+  return { markdown, setMarkdown }
 }
 
 export default useMarkdown

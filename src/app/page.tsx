@@ -12,7 +12,7 @@ import { useState } from 'react'
 export default function Home() {
   const [showCodeMarkdown, setshowCodeMarkdown] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [markdown, setMarkdown] = useMarkdown()
+  const { markdown, setMarkdown } = useMarkdown()
 
   const toggleMarkdownPreview = () => {
     setshowCodeMarkdown(!showCodeMarkdown)
