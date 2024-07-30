@@ -38,7 +38,7 @@ export class GithubService {
 
     const listTopTechnologyConcat = listTopLanguage.concat(listTopFramework)
     const listTopTechnology = listTopTechnologyConcat.filter(
-      (topTechnology) => topTechnology[1] !== 0
+      (topTechnology) => topTechnology[1] !== 0 // TopTechnology[1] is bytes of code
     )
 
     return listTopTechnology
