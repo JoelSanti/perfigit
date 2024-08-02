@@ -7,6 +7,7 @@ import {
   Navbar,
 } from '@/components'
 import useMarkdown from '@/hooks/useMarkdown.hook'
+import { getCodeProfileMarkdown } from '@/libs/graph'
 import { useState } from 'react'
 
 export default function Home() {
@@ -17,9 +18,14 @@ export default function Home() {
   const toggleMarkdownPreview = () => {
     setshowCodeMarkdown(!showCodeMarkdown)
   }
-  const handleSubmit = (value: string) => {
+  const generateMarkdownCode = async (userProfileGit: string) => {
     setIsLoading(true)
-    console.log(value)
+
+    const params = `Informacion de usuario:${userProfileGit}`
+    const githubProfileMarkdown = await getCodeProfileMarkdown(params)
+
+    setMarkdown(githubProfileMarkdown)
+    setIsLoading(false)
   }
 
   return (
@@ -41,7 +47,7 @@ export default function Home() {
             ) : (
               <GithubForm
                 onClick={toggleMarkdownPreview}
-                onSubmit={handleSubmit}
+                onSubmit={generateMarkdownCode}
                 isLoading={isLoading}
               />
             )}

@@ -12,6 +12,8 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.40",
+    "ai": "^3.2.45",
     "github-markdown-css": "^5.6.1",
     "next": "14.2.5",
     "react": "^18",
