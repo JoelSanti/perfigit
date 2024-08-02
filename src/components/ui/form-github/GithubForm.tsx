@@ -1,16 +1,17 @@
-import { GithubIcon } from '@/components/icons'
+import { CodeIcon, GithubIcon } from '@/components/icons'
+
 import { GithubFormProps } from '@/interfaces/ui/props/form-github.interface'
-import React, { useState } from 'react'
+import React from 'react'
 
 export const GithubForm: React.FC<GithubFormProps> = ({
   onClick,
   onSubmit,
   isLoading,
+  inputValue,
+  onInputChange,
 }) => {
-  const [inputValue, setInputValue] = useState('')
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value)
+    onInputChange(event.target.value)
   }
   const handleSubmit = () => {
     onSubmit(inputValue)
@@ -19,33 +20,26 @@ export const GithubForm: React.FC<GithubFormProps> = ({
   return (
     <div className='card relative my-auto h-full bg-neutral text-neutral-content lg:w-1/2'>
       <div className='card-body items-center justify-center gap-5 text-center'>
-        <button
-          className='btn absolute right-0 top-0 m-2'
-          onClick={onClick}
-          {...(isLoading ? { disabled: true } : {})}
+        <div
+          className='tooltip tooltip-left absolute right-0 top-0'
+          data-tip='Código Markdown'
         >
-          Código Markdown
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='size-5'
+          <button
+            className='btn btn-outline m-2 p-3'
+            onClick={onClick}
+            {...(isLoading ? { disabled: true } : {})}
           >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z'
-            />
-          </svg>
-        </button>
-        <h2 className='card-title text-primary'>PerfiGit</h2>
-        <span>
+            <CodeIcon />
+          </button>
+        </div>
+        <h2 className='card-title text-3xl font-bold text-primary lg:text-5xl'>
+          PerfiGit
+        </h2>
+        <span className='max-w-md py-2 lg:py-3'>
           Aplicación web enfocada en generar perfiles README de GitHub mediante
           IA.
         </span>
-        <label className='input input-bordered flex items-center gap-2'>
+        <label className='input input-bordered mb-2 flex w-11/12 items-center gap-2 md:w-7/12 lg:mb-3 lg:w-5/12'>
           <GithubIcon />
           <input
             type='text'
@@ -55,9 +49,9 @@ export const GithubForm: React.FC<GithubFormProps> = ({
             onChange={handleInputChange}
           />
         </label>
-        <div className='mt-4'>
+        <div>
           <button className='btn btn-primary' onClick={handleSubmit}>
-            Aceptar
+            Generar
           </button>
         </div>
       </div>

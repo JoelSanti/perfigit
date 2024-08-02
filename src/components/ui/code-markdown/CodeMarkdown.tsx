@@ -22,33 +22,31 @@ export const CodeMarkdown: React.FC<CodeMarkdownProps> = ({
 
   return (
     <>
-      <div className='relative h-full lg:w-1/2'>
-        <button
-          onClick={copyToClipboard}
-          style={{ position: 'absolute', top: 10, right: 74 }}
-          className='btn btn-outline btn-primary'
-        >
-          <GoBackIcon />
-        </button>
-        <button
-          style={{ position: 'absolute', top: 10, right: 10 }}
-          className='btn btn-outline btn-primary'
-          onClick={onClick}
-        >
-          <ClipboardIcon />
-        </button>
-        {copied && (
-          <span
-            style={{ position: 'absolute', top: 15, right: 135 }}
-            className='rounded-lg bg-accent px-2 py-1 text-black'
+      <div className='h-full bg-slate-800 lg:w-1/2'>
+        <div className='relative flex justify-end gap-2 pr-2 pt-2'>
+          <button
+            onClick={copyToClipboard}
+            className='btn btn-outline btn-primary p-3'
           >
-            Copiado
-          </span>
-        )}
+            <GoBackIcon />
+          </button>
+          <button className='btn btn-outline btn-primary p-3' onClick={onClick}>
+            <ClipboardIcon />
+          </button>
+          {copied && (
+            <span
+              style={{ position: 'absolute', top: 15, right: 120 }}
+              className='rounded-lg bg-accent px-2 py-1 text-black'
+            >
+              Copiado
+            </span>
+          )}
+        </div>
+
         <textarea
           value={code}
           onChange={handleCodeChange}
-          className='h-full w-full border-none bg-slate-800 p-10 focus:outline-none focus:ring-0'
+          className='h-full w-full border-none bg-slate-800 px-10 pb-10 pt-5 focus:outline-none focus:ring-0'
         />
       </div>
     </>

@@ -13,6 +13,7 @@ export default function Home() {
   const [showCodeMarkdown, setshowCodeMarkdown] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { markdown, setMarkdown } = useMarkdown()
+  const [inputValue, setInputValue] = useState<string>('')
 
   const toggleMarkdownPreview = () => {
     setshowCodeMarkdown(!showCodeMarkdown)
@@ -20,6 +21,7 @@ export default function Home() {
   const handleSubmit = (value: string) => {
     setIsLoading(true)
     console.log(value)
+    setIsLoading(false)
   }
 
   return (
@@ -30,7 +32,7 @@ export default function Home() {
         </Container>
       </header>
       <section>
-        <Container className='mt-8'>
+        <Container className='my-8'>
           <div className='p card h-[780px] overflow-hidden bg-neutral shadow-xl lg:card-side'>
             {showCodeMarkdown ? (
               <CodeMarkdown
@@ -43,6 +45,8 @@ export default function Home() {
                 onClick={toggleMarkdownPreview}
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
+                inputValue={inputValue}
+                onInputChange={setInputValue}
               />
             )}
             {isLoading ? (
