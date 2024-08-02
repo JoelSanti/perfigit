@@ -23,15 +23,15 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className='h-screen py-8'>
       <header>
-        <Container className='mt-8 flex h-20 items-center'>
+        <Container className='flex h-20 items-center'>
           <Navbar />
         </Container>
       </header>
       <section>
         <Container className='mt-8'>
-          <div className='p card h-[780px] overflow-hidden bg-neutral shadow-xl lg:card-side'>
+          <div className='p -bg-base-100 card h-[780px] overflow-hidden border border-base-100 shadow-xl lg:card-side'>
             {showCodeMarkdown ? (
               <CodeMarkdown
                 code={markdown}
