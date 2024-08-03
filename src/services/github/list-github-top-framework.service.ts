@@ -19,7 +19,6 @@ export class ListGithubTopFrameworkService {
     this.LV_FRAMEWORK_OBJECT = {
       'package.json': ['react', 'next', 'vue', 'angular', 'svelte'],
       'requirements.txt': ['django', 'flask', 'fastapi'],
-      'pubspec.yaml': ['flutter'],
     }
 
     this.ListGithubRepositoryService = new ListGithubRepositoryService(
