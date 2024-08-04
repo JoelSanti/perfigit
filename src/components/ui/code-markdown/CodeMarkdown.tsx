@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { CodeMarkdownProps } from '@/interfaces/ui/props/code-markdown.interface'
 import { ClipboardIcon, GoBackIcon } from '@/components/icons'
@@ -26,23 +27,22 @@ export const CodeMarkdown: React.FC<CodeMarkdownProps> = ({
         <div className='relative flex justify-end gap-2 pr-2 pt-2'>
           <button
             onClick={copyToClipboard}
-            className='btn btn-outline btn-primary p-3'
+            className='btn btn-outline btn-primary'
           >
             <GoBackIcon />
           </button>
-          <button className='btn btn-outline btn-primary p-3' onClick={onClick}>
+          <button className='btn btn-outline btn-primary' onClick={onClick}>
             <ClipboardIcon />
           </button>
           {copied && (
             <span
-              style={{ position: 'absolute', top: 15, right: 120 }}
+              style={{ position: 'absolute', top: 15, right: 130 }}
               className='rounded-lg bg-accent px-2 py-1 text-black'
             >
               Copiado
             </span>
           )}
         </div>
-
         <textarea
           value={code}
           onChange={handleCodeChange}
