@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { generalFont } from '@/config/fonts'
+import CustomLayout from '@/components/layout/CustomLayout'
 
 export const metadata: Metadata = {
   title: 'PerfiGit',
@@ -15,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='es'>
-      <body className={generalFont.className}>{children}</body>
+      <body className={generalFont.className}>
+        <CustomLayout>{children}</CustomLayout>
+      </body>
     </html>
   )
 }

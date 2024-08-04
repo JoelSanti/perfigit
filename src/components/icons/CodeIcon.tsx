@@ -1,4 +1,4 @@
-const ClipboardIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const CodeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     fill='none'
@@ -11,9 +11,9 @@ const ClipboardIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <path
       strokeLinecap='round'
       strokeLinejoin='round'
-      d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3'
+      d='M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5'
     />
   </svg>
 )
 
-export default ClipboardIcon
+export default CodeIcon

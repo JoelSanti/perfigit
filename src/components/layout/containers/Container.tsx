@@ -1,5 +1,5 @@
-import { ContainerProps } from '@/interfaces/ui/props/container.interface'
 import React from 'react'
+import { ContainerProps } from '@/interfaces/ui/props/container.interface'
 
 export const Container: React.FC<ContainerProps> = ({
   children,
