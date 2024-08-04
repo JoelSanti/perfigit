@@ -1,32 +1,34 @@
-import React from 'react'
 import { CodeIcon, GithubIcon } from '@/components/icons'
-import { GithubFormProps } from '@/interfaces/ui/props/github-form.interface'
+import { useMarkdown } from '@/hooks/useMarkdown.hooks'
 
-export const GithubForm: React.FC<GithubFormProps> = ({
-  onClick,
-  onSubmit,
-  isLoading,
-  inputValue,
-  onInputChange,
-}) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onInputChange(event.target.value)
-  }
-  const handleSubmit = () => {
-    onSubmit(inputValue)
+export const GithubForm: React.FC = () => {
+  const { generateMarkdownCode, isMarkdownLoading, toggleMarkdownPreview } =
+    useMarkdown()
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const form = event.target as HTMLFormElement
+    const formData = new FormData(form)
+    const username = formData.get('username') as string
+
+    generateMarkdownCode(username)
   }
 
   return (
     <div className='card relative my-auto h-full bg-neutral text-neutral-content lg:w-1/2'>
-      <div className='card-body items-center justify-center gap-4 text-center'>
+      <form
+        className='card-body items-center justify-center gap-4 text-center'
+        onSubmit={handleSubmit}
+      >
         <div
           className='tooltip tooltip-left absolute right-0 top-0'
           data-tip='Código Markdown'
         >
           <button
             className='btn btn-outline m-2'
-            onClick={onClick}
-            {...(isLoading ? { disabled: true } : {})}
+            onClick={toggleMarkdownPreview}
+            {...(isMarkdownLoading ? { disabled: true } : {})}
           >
             <CodeIcon />
           </button>
@@ -34,7 +36,7 @@ export const GithubForm: React.FC<GithubFormProps> = ({
         <h2 className='card-title text-xl font-bold text-primary lg:text-3xl'>
           PerfiGit
         </h2>
-        <span className='text-md max-w-md md:px-2'>
+        <span className='text-md max-w-md text-pretty md:px-2'>
           Aplicación web enfocada en generar perfiles README de GitHub usando
           IA.
         </span>
@@ -44,16 +46,14 @@ export const GithubForm: React.FC<GithubFormProps> = ({
             type='text'
             className='grow'
             placeholder='Usuario'
-            value={inputValue}
-            onChange={handleInputChange}
+            name='username'
+            required
           />
         </label>
         <div>
-          <button className='btn btn-primary' onClick={handleSubmit}>
-            Generar
-          </button>
+          <button className='btn btn-primary'>Generar</button>
         </div>
-      </div>
+      </form>
     </div>
   )
 }

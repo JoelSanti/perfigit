@@ -2,22 +2,16 @@
 
 import React, { useState } from 'react'
 import { ClipboardIcon, GoBackIcon } from '@/components/icons'
-import { MarkdownCodeProps } from '@/interfaces/ui/props/markdown-code.interface'
+import { useMarkdown } from '@/hooks/useMarkdown.hooks'
 
-export const MarkdownCode: React.FC<MarkdownCodeProps> = ({
-  code,
-  onCodeChange,
-  onClick,
-}) => {
+export const MarkdownCode: React.FC = () => {
+  const { markdown, setMarkdown, toggleMarkdownPreview } = useMarkdown()
   const [copied, setCopied] = useState(false)
 
-  const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    onCodeChange(event.target.value)
-  }
   const copyToClipboard = (e: React.MouseEvent) => {
     e.preventDefault()
 
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(markdown)
     setCopied(true)
     setTimeout(() => setCopied(false), 1500)
   }
@@ -32,7 +26,10 @@ export const MarkdownCode: React.FC<MarkdownCodeProps> = ({
           >
             <GoBackIcon />
           </button>
-          <button className='btn btn-outline btn-primary' onClick={onClick}>
+          <button
+            className='btn btn-outline btn-primary'
+            onClick={() => toggleMarkdownPreview()}
+          >
             <ClipboardIcon />
           </button>
           {copied && (
@@ -45,8 +42,8 @@ export const MarkdownCode: React.FC<MarkdownCodeProps> = ({
           )}
         </div>
         <textarea
-          value={code}
-          onChange={handleCodeChange}
+          value={markdown}
+          onChange={({ target }) => setMarkdown(target.value)}
           className='h-full w-full border-none bg-slate-800 px-10 pb-10 pt-5 focus:outline-none focus:ring-0'
         />
       </div>
