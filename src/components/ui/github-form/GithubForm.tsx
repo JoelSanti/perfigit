@@ -13,6 +13,7 @@ export const GithubForm: React.FC = () => {
     const username = formData.get('username') as string
 
     generateMarkdownCode(username)
+    form.reset()
   }
 
   return (
