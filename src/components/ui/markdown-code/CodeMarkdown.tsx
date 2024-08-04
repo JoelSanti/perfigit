@@ -1,9 +1,10 @@
 'use client'
-import React, { useState } from 'react'
-import { CodeMarkdownProps } from '@/interfaces/ui/props/code-markdown.interface'
-import { ClipboardIcon, GoBackIcon } from '@/components/icons'
 
-export const CodeMarkdown: React.FC<CodeMarkdownProps> = ({
+import React, { useState } from 'react'
+import { ClipboardIcon, GoBackIcon } from '@/components/icons'
+import { MarkdownCodeProps } from '@/interfaces/ui/props/markdown-code.interface'
+
+export const MarkdownCode: React.FC<MarkdownCodeProps> = ({
   code,
   onCodeChange,
   onClick,

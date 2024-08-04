@@ -1,16 +1,16 @@
 'use client'
-import { CodeMarkdown, GithubForm, MarkDownPreview } from '@/components'
+import { MarkdownCode, GithubForm, MarkDownPreview } from '@/components'
 import useMarkdown from '@/hooks/useMarkdown.hook'
 import { useState } from 'react'
 
 export default function Home() {
-  const [showCodeMarkdown, setshowCodeMarkdown] = useState<boolean>(false)
+  const [showMarkdownCode, setshowMarkdownCode] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { markdown, setMarkdown } = useMarkdown()
   const [inputValue, setInputValue] = useState<string>('')
 
   const toggleMarkdownPreview = () => {
-    setshowCodeMarkdown(!showCodeMarkdown)
+    setshowMarkdownCode(!showMarkdownCode)
   }
   const handleSubmit = (value: string) => {
     setIsLoading(true)
@@ -22,8 +22,8 @@ export default function Home() {
     <main>
       <section>
         <div className='p card h-[780px] overflow-hidden bg-neutral shadow-xl lg:card-side'>
-          {showCodeMarkdown ? (
-            <CodeMarkdown
+          {showMarkdownCode ? (
+            <MarkdownCode
               code={markdown}
               onCodeChange={setMarkdown}
               onClick={toggleMarkdownPreview}

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { generalFont } from '@/config/fonts'
-import { Container, Navbar } from '@/components'
+import CustomLayout from '@/components/layout/CustomLayout'
 
 export const metadata: Metadata = {
   title: 'PerfiGit',
@@ -17,12 +17,7 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={generalFont.className}>
-        <header>
-          <Container className='mt-8 flex h-20 items-center'>
-            <Navbar />
-          </Container>
-        </header>
-        <Container className='my-8'>{children}</Container>
+        <CustomLayout>{children}</CustomLayout>
       </body>
     </html>
   )
