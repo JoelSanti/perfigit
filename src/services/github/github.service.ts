@@ -3,6 +3,7 @@ import { GetGithubUserService } from './get-github-user.service'
 import { ListGithubTopLanguageService } from './list-github-top-language.service'
 import { ListGithubTopFrameworkService } from './list-github-top-framework.service'
 import { Payload } from '@/interfaces/ui/props/payload.interface'
+import { LV_API_GITHUB_ENDPOINT } from '@/constants/urls.constant'
 
 export class GithubService {
   private endpoint: string
@@ -13,7 +14,7 @@ export class GithubService {
   private ListGithubTopFrameworkService: ListGithubTopFrameworkService
 
   constructor(username: string) {
-    this.endpoint = 'https://api.github.com'
+    this.endpoint = LV_API_GITHUB_ENDPOINT
     this.username = username
 
     this.GetGithubUserService = new GetGithubUserService(

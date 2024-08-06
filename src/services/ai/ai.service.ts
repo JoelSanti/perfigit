@@ -1,3 +1,5 @@
+import { LV_IA_MODEL } from '@/constants/config.constant'
+import { LV_API_GROQ_ENDPOINT } from '@/constants/urls.constant'
 import { Payload } from '@/interfaces/ui/props/payload.interface'
 import { createOpenAI } from '@ai-sdk/openai'
 import { generateText } from 'ai'
@@ -8,12 +10,12 @@ export class AiService {
 
   constructor() {
     this.AIClient = this.getAIClient()
-    this.LV_MODEL = 'llama3-8b-8192'
+    this.LV_MODEL = LV_IA_MODEL
   }
 
   private getAIClient = (): ReturnType<typeof createOpenAI> => {
     return createOpenAI({
-      baseURL: 'https://api.groq.com/openai/v1',
+      baseURL: LV_API_GROQ_ENDPOINT,
       apiKey: process.env.NEXT_PUBLIC_GROQ_API_KEY,
     })
   }
