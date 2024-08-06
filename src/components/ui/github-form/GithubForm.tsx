@@ -1,4 +1,5 @@
 import { CodeIcon, GithubIcon } from '@/components/icons'
+import { useGithubUsername } from '@/hooks/useGithubUsername.hook'
 import { useMarkdown } from '@/hooks/useMarkdown.hooks'
 import { useToast } from '@/hooks/useToast.hook'
 
@@ -6,13 +7,10 @@ export const GithubForm: React.FC = () => {
   const { generateMarkdownCode, isMarkdownLoading, toggleMarkdownPreview } =
     useMarkdown()
   const { showToast } = useToast()
+  const { username, setUsername } = useGithubUsername()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
-
-    const form = event.target as HTMLFormElement
-    const formData = new FormData(form)
-    const username = formData.get('username') as string
 
     if (!username) {
       return showToast('Por favor, ingrese un nombre de usuario.')
@@ -52,7 +50,8 @@ export const GithubForm: React.FC = () => {
             type='text'
             className='grow'
             placeholder='Usuario'
-            name='username'
+            onChange={({ target }) => setUsername(target.value)}
+            value={username}
           />
         </label>
         <div>

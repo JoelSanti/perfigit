@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { generalFont } from '@/config/fonts'
-import { MarkdownProvider } from '@/context/Markdown.context'
-import { ToastProvider } from '@/context/Toast.context'
+import { MainProvider } from '@/providers/main.provider'
 
 export const metadata: Metadata = {
   title: 'PerfiGit',
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={generalFont.className}>
-        <ToastProvider>
-          <MarkdownProvider>{children}</MarkdownProvider>
-        </ToastProvider>
+        <MainProvider>{children}</MainProvider>
       </body>
     </html>
   )
