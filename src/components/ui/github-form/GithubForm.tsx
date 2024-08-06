@@ -15,7 +15,6 @@ export const GithubForm: React.FC = () => {
     const username = formData.get('username') as string
 
     if (!username) {
-      console.error('Por favor, ingrese un nombre de usuario.')
       return showToast('Por favor, ingrese un nombre de usuario.')
     }
 
