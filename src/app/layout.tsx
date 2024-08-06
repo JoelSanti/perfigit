@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { generalFont } from '@/config/fonts'
-import CustomLayout from '@/components/layout/CustomLayout'
 import { MarkdownProvider } from '@/context/Markdown.context'
 import { ToastProvider } from '@/context/Toast.context'
 
@@ -20,9 +19,7 @@ export default function RootLayout({
     <html lang='es'>
       <body className={generalFont.className}>
         <ToastProvider>
-          <MarkdownProvider>
-            <CustomLayout>{children}</CustomLayout>
-          </MarkdownProvider>
+          <MarkdownProvider>{children}</MarkdownProvider>
         </ToastProvider>
       </body>
     </html>
