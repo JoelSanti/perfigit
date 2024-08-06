@@ -41,11 +41,13 @@ export const MarkdownCode: React.FC = () => {
             </span>
           )}
         </div>
-        <textarea
-          value={markdown}
-          onChange={({ target }) => setMarkdown(target.value)}
-          className='h-full w-full border-none bg-slate-800 px-10 pb-10 pt-5 focus:outline-none focus:ring-0'
-        />
+        <code>
+          <textarea
+            value={markdown}
+            onChange={({ target }) => setMarkdown(target.value)}
+            className='h-full w-full border-none bg-slate-800 px-10 pb-10 pt-5 focus:outline-none focus:ring-0'
+          />
+        </code>
       </div>
     </>
   )
