@@ -1,3 +1,7 @@
+import {
+  LV_HTTP_STATUS_CODE,
+  LV_SECONDS_TO_MILLISECONDS,
+} from '@/constants/config.constant'
 import { GithubUser } from '@/interfaces/github/github-user.interface'
 import { Payload } from '@/interfaces/ui/props/payload.interface'
 
@@ -20,8 +24,13 @@ export class GetGithubUserService {
       const rateLimitRemaining = response.headers.get('X-RateLimit-Remaining')
       const resetTime = response.headers.get('X-RateLimit-Reset')
 
-      if (response.status === 403 && rateLimitRemaining === '0') {
-        const resetTimeDate = new Date(Number(resetTime) * 1000)
+      if (
+        response.status === LV_HTTP_STATUS_CODE.FORBIDDEN &&
+        rateLimitRemaining === '0'
+      ) {
+        const resetTimeDate = new Date(
+          Number(resetTime) * LV_SECONDS_TO_MILLISECONDS
+        )
 
         const message = `Solicitudes excedidas.\nIntente nuevamente después de ${resetTimeDate.toLocaleTimeString()}`
         const payload: Payload<GithubUser> = {

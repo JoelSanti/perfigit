@@ -1,5 +1,6 @@
 'use client'
 
+import { LV_INITIAL_MARKDOWW } from '@/constants/ui.constant'
 import { useToast } from '@/hooks/useToast.hook'
 import { UseMarkdownProps } from '@/interfaces/ui/props/use-markdown.interface'
 import { AiService } from '@/services/ai/ai.service'
@@ -12,11 +13,6 @@ export const MarkdownContext = createContext<UseMarkdownProps | undefined>(
 )
 
 export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
-  const LV_INITIAL_MARKDOWW =
-    '<div style="display: flex; justify-content: center; align-items: center; height: 100%;">\n\n' +
-    '# BIENVENIDO A PERFIGIT\n\n' +
-    '</div>'
-
   const [markdown, setMarkdown] = useState<string>(LV_INITIAL_MARKDOWW)
   const [isMarkdownLoading, setIsMarkdownLoading] = useState<boolean>(false)
   const [isShowMarkdownCode, setisShowMarkdownCode] = useState<boolean>(false)
