@@ -53,26 +53,26 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const getMarkdownPrompt = (): string => {
-    const VL_MARKDOWN_PROMPT = `
+    const _LV_MARKDOWN_PROMPT = `
     Crea un perfil de GitHub README en formato Markdown. El contenido debe ser moderno, visualmente atractivo y en español.
 
-    1. *Ejemplos*: Usa cualquiera de los ejemplos proporcionados como base: 
-    
+    1. *Ejemplos*: Usa cualquiera de los ejemplos proporcionados como base:
+
     ${templates}
 
-     Puedes usar todas las herramientas que encuentres en los ejemplos.
+    Puedes usar todas las herramientas que encuentres en los ejemplos.
 
-    2. *Sección de presentación*: Añade un título "Sobre mí" con un icono representativo. Incluye una descripción corta de ti y tu ubicación, si vas a incluir el avatar que esté centrado y con bordes redondeados.
-    
-    3. *Sección de Tecnologías*: Añade un título "Tecnologías" con un icono representativo. Muestra las tecnologías en un contenedor horizontal usando badges o iconos atractivos de shields.io.
-    
-    4. *Contacto e Información Adicional*: Proporciona formas de contacto, como email y enlaces a redes sociales.
+    2. *Sección de presentación*: Añade un título "Sobre mí" con un icono representativo. Incluye una descripción corta de ti y tu ubicación, si vas a incluir el avatar que esté centrado y con bordes redondeados, usa espacios entre la imagen y el texto para que se vea bien.
 
-    5. *Estadisticas de Github y lenguajes mas usados*: Puedes usar las herramientas de estadística y graficos para darle un mejor estilo siempre y cuando est'en ligadas al perfil de github correcto proporcionado por el usuario.
-    
+    3. *Sección de Tecnologías*: Añade un título "Tecnologías" con un icono representativo. Muestra las tecnologías en un contenedor horizontal usando badges o iconos atractivos de shields.io. En caso de mostrar más de una tecnología, asegúrate de que estén bien alineadas y tengan un buen espaciado.
+
+    4. *Contacto e Información Adicional*: Proporciona formas de contacto, como email y enlaces a redes sociales. En caso de mostrar más de un enlace, asegúrate de que estén bien alineados y tengan un buen espaciado.
+
+    5. *Estadisticas de Github y lenguajes mas usados*: Puedes usar las herramientas de estadística y graficos para darle un mejor estilo siempre y cuando esten ligadas al perfil de github correcto proporcionado por el usuario. En caso de mostrar más de un gráfico, asegúrate de que estén bien alineados y tengan un buen espaciado.
+
     Recuerda, la respuesta debe contener solo el perfil completo en formato Markdown, sin ningún texto adicional.
     `
-    return VL_MARKDOWN_PROMPT
+    return _LV_MARKDOWN_PROMPT
   }
 
   const getMarkdownSystem = async (
@@ -90,7 +90,7 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
     const { login, avatar_url, location, email } = data
     const listTopTechnology = await githubService.listGithubTopTechnology()
 
-    const VL_MARKDOWN_SYSTEM = `
+    const _LV_MARKDOWN_SYSTEM = `
     1. Información del Usuario:
 
     - Nombre: ${login || 'Ingrese aquí su nombre'}
@@ -100,11 +100,12 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
     - Tecnologías - Bytes: ${listTopTechnology.join(', ') || 'Ingrese aquí sus tecnologías'}
     - GitHub Username: ${trimmedUsername || 'Ingrese aquí su nombre de usuario de GitHub'}
     - GitHub URL: ${trimmedUsername ? `https://github.com/${trimmedUsername}` : 'Ingrese aquí la URL de su perfil de GitHub'}
+
     2. Formato de Respuesta:
     Devuelve el perfil en formato markdown sin ningún texto adicional.
     `
 
-    return VL_MARKDOWN_SYSTEM
+    return _LV_MARKDOWN_SYSTEM
   }
 
   const toggleMarkdownPreview = (): void =>
