@@ -60,7 +60,7 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
 
     ${templates}
 
-    Puedes usar todas las herramientas que encuentres en los ejemplos.
+    Puedes usar todas las herramientas que encuentres en los ejemplos, usando la información del usuario.
 
     2. *Sección de presentación*: Añade un título "Sobre mí" con un icono representativo. Incluye una descripción corta de ti y tu ubicación, si vas a incluir el avatar que esté centrado y con bordes redondeados, usa espacios entre la imagen y el texto para que se vea bien.
 
