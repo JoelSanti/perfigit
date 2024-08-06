@@ -56,7 +56,11 @@ export const GithubForm: React.FC = () => {
           />
         </label>
         <div>
-          <button className='btn btn-primary'>Generar</button>
+          <button
+            className={`btn btn-primary ${isMarkdownLoading && 'btn-disabled'}`}
+          >
+            Generar
+          </button>
         </div>
       </form>
     </div>
