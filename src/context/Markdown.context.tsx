@@ -1,5 +1,6 @@
 'use client'
 
+import { useToast } from '@/hooks/useToast.hook'
 import { UseMarkdownProps } from '@/interfaces/ui/props/use-markdown.interface'
 import { AiService } from '@/services/ai/ai.service'
 import { GithubService } from '@/services/github/github.service'
@@ -18,6 +19,7 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
   const [markdown, setMarkdown] = useState<string>(LV_INITIAL_MARKDOWW)
   const [isMarkdownLoading, setIsMarkdownLoading] = useState<boolean>(false)
   const [isShowMarkdownCode, setisShowMarkdownCode] = useState<boolean>(false)
+  const { showToast } = useToast()
 
   const generateMarkdownCode = async (
     githubUsername: string
@@ -27,13 +29,22 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
     const markdownPrompt = getMarkdownPrompt()
     const markdownSystem = await getMarkdownSystem(githubUsername)
 
+    if (!markdownPrompt || !markdownSystem) {
+      return
+    }
+
     const aiService = new AiService()
-    const githubProfileMarkdown = await aiService.getProfileMarkdown(
+    const { data, message, is_done } = await aiService.getProfileMarkdown(
       markdownPrompt,
       markdownSystem
     )
 
-    setMarkdown(githubProfileMarkdown)
+    if (!data || !is_done) {
+      setIsMarkdownLoading(false)
+      return showToast(message)
+    }
+
+    setMarkdown(data)
     setIsMarkdownLoading(false)
   }
 
@@ -57,11 +68,18 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
     return VL_MARKDOWN_PROMPT
   }
 
-  const getMarkdownSystem = async (githubUsername: string): Promise<string> => {
+  const getMarkdownSystem = async (
+    githubUsername: string
+  ): Promise<string | void> => {
     const githubService = new GithubService(githubUsername)
+    const { data, message, is_done } = await githubService.getGithubUser()
 
-    const { login, avatar_url, location, email } =
-      await githubService.getGithubUser()
+    if (!data || !is_done) {
+      setIsMarkdownLoading(false)
+      return showToast(message)
+    }
+
+    const { login, avatar_url, location, email } = data
     const listTopTechnology = await githubService.listGithubTopTechnology()
 
     const VL_MARKDOWN_SYSTEM = `

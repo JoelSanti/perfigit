@@ -3,6 +3,7 @@ import './globals.css'
 import { generalFont } from '@/config/fonts'
 import CustomLayout from '@/components/layout/CustomLayout'
 import { MarkdownProvider } from '@/context/Markdown.context'
+import { ToastProvider } from '@/context/Toast.context'
 
 export const metadata: Metadata = {
   title: 'PerfiGit',
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={generalFont.className}>
-        <MarkdownProvider>
-          <CustomLayout>{children}</CustomLayout>
-        </MarkdownProvider>
+        <ToastProvider>
+          <MarkdownProvider>
+            <CustomLayout>{children}</CustomLayout>
+          </MarkdownProvider>
+        </ToastProvider>
       </body>
     </html>
   )

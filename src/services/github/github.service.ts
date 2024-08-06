@@ -2,6 +2,7 @@ import { GithubUser } from '@/interfaces/github/github-user.interface'
 import { GetGithubUserService } from './get-github-user.service'
 import { ListGithubTopLanguageService } from './list-github-top-language.service'
 import { ListGithubTopFrameworkService } from './list-github-top-framework.service'
+import { Payload } from '@/interfaces/ui/props/payload.interface'
 
 export class GithubService {
   private endpoint: string
@@ -29,7 +30,7 @@ export class GithubService {
     )
   }
 
-  getGithubUser = async (): Promise<GithubUser> =>
+  getGithubUser = async (): Promise<Payload<GithubUser>> =>
     this.GetGithubUserService.execute()
 
   listGithubTopTechnology = async (): Promise<[string, number][]> => {
