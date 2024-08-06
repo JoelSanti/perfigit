@@ -1,3 +1,4 @@
+import { Payload } from '@/interfaces/ui/props/payload.interface'
 import { createOpenAI } from '@ai-sdk/openai'
 import { generateText } from 'ai'
 
@@ -20,13 +21,36 @@ export class AiService {
   public getProfileMarkdown = async (
     prompt: string,
     system: string
-  ): Promise<string> => {
-    const { text } = await generateText({
-      model: this.AIClient(this.LV_MODEL),
-      prompt,
-      system,
-    })
+  ): Promise<Payload<string>> => {
+    let is_done = false
+    let message = ''
 
-    return text
+    try {
+      const { text: data } = await generateText({
+        model: this.AIClient(this.LV_MODEL),
+        prompt,
+        system,
+      })
+
+      message = 'Se generó el perfil correctamente'
+      is_done = true
+      const payload = {
+        data,
+        message,
+        is_done,
+      }
+
+      return payload
+    } catch (error) {
+      message = `Error al generar el perfil: ${error}`
+
+      const payload = {
+        data: null,
+        message,
+        is_done,
+      }
+
+      return payload
+    }
   }
 }
