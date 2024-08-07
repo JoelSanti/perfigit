@@ -24,35 +24,35 @@ export class AiService {
     prompt: string,
     system: string
   ): Promise<Payload<string>> => {
-    let is_done = false
+    let data = null
     let message = ''
+    let is_done = false
+    let payload: Payload<string> = {
+      data,
+      message,
+      is_done,
+    }
 
     try {
-      const { text: data } = await generateText({
+      const { text } = await generateText({
         model: this.AIClient(this.LV_MODEL),
         prompt,
         system,
       })
 
+      data = text
       message = 'Se generó el perfil correctamente'
       is_done = true
-      const payload = {
-        data,
-        message,
-        is_done,
-      }
-
-      return payload
     } catch (error) {
       message = `Error al generar el perfil: ${error}`
-
-      const payload = {
-        data: null,
-        message,
-        is_done,
-      }
-
-      return payload
     }
+
+    payload = {
+      data,
+      message,
+      is_done,
+    }
+
+    return payload
   }
 }

@@ -55,6 +55,7 @@ export const MarkdownProvider = ({ children }: { children: ReactNode }) => {
   const getMarkdownPrompt = (): string => {
     const _LV_MARKDOWN_PROMPT = `
     Crea un perfil de GitHub README en formato Markdown. El contenido debe ser moderno, visualmente atractivo y en español.
+    Las secciones que no contengan elementos deben ser omitidas.
 
     1. *Ejemplos*: Usa cualquiera de los ejemplos proporcionados como base:
 

@@ -30,6 +30,7 @@ export const GithubForm: React.FC = () => {
           data-tip='Código Markdown'
         >
           <button
+            type='button'
             className='btn btn-outline m-2'
             onClick={toggleMarkdownPreview}
             {...(isMarkdownLoading ? { disabled: true } : {})}
@@ -56,6 +57,7 @@ export const GithubForm: React.FC = () => {
         </label>
         <div>
           <button
+            type='submit'
             className={`btn btn-primary ${isMarkdownLoading && 'btn-disabled'}`}
           >
             Generar

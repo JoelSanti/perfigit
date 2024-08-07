@@ -16,13 +16,25 @@ export class GetGithubUserService {
 
   execute = async (): Promise<Payload<GithubUser>> => {
     const url = `${this.endpoint}/users/${this.username}`
+
+    let data = null
     let message = ''
     let is_done = false
+    let payload: Payload<GithubUser> = {
+      data,
+      message,
+      is_done,
+    }
 
     try {
       const response = await fetch(url)
       const rateLimitRemaining = response.headers.get('X-RateLimit-Remaining')
       const resetTime = response.headers.get('X-RateLimit-Reset')
+
+      if (response.status === LV_HTTP_STATUS_CODE.NOT_FOUND) {
+        message = 'Error al obtener el usuario de Github'
+        return { ...payload, message }
+      }
 
       if (
         response.status === LV_HTTP_STATUS_CODE.FORBIDDEN &&
@@ -31,38 +43,23 @@ export class GetGithubUserService {
         const resetTimeDate = new Date(
           Number(resetTime) * LV_SECONDS_TO_MILLISECONDS
         )
-
-        const message = `Solicitudes excedidas.\nIntente nuevamente después de ${resetTimeDate.toLocaleTimeString()}`
-        const payload: Payload<GithubUser> = {
-          data: null,
-          message,
-          is_done,
-        }
-
-        return payload
+        message = `Solicitudes excedidas.\nIntente nuevamente después de ${resetTimeDate.toLocaleTimeString()}`
+        return { ...payload, message }
       }
 
-      const data: GithubUser = await response.json()
-
+      data = await response.json()
       message = 'Se obtuvo el usuario de Github correctamente'
       is_done = true
-      const payload = {
-        data,
-        message,
-        is_done,
-      }
-
-      return payload
     } catch (error) {
-      const message = `Error al obtener el usuario de Github: ${error}`
-
-      const payload: Payload<GithubUser> = {
-        data: null,
-        message,
-        is_done,
-      }
-
-      return payload
+      message = `Error al obtener el usuario de Github: ${error}`
     }
+
+    payload = {
+      data,
+      message,
+      is_done,
+    }
+
+    return payload
   }
 }

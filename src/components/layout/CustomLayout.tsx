@@ -11,7 +11,7 @@ function CustomLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
       <header>
-        <Container className='mt-8 flex h-20 items-center'>
+        <Container className='mt-8 flex items-center'>
           <Navbar />
         </Container>
       </header>
